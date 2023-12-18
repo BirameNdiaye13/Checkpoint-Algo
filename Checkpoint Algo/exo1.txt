@@ -1,0 +1,37 @@
+ALGORITHME CompterMotsEtVoyelles
+    // Initialisation des compteurs
+    nombreMots := 0
+    nombreVoyelles := 0
+    caractereCourant := LIRE_CARACTERE()
+
+    // Parcours de la phrase caractère par caractère
+    TANT_QUE (caractereCourant != '.') FAIRE
+        SI (caractereCourant = ' ' ET caracterePrecedent != ' ') ALORS
+            // On a trouvé un espace entre deux mots
+            nombreMots := nombreMots + 1
+        FIN_SI
+
+        SI (EST_VOYELLE(caractereCourant)) ALORS
+            // On a trouvé une voyelle
+            nombreVoyelles := nombreVoyelles + 1
+        FIN_SI
+
+        caracterePrecedent := caractereCourant
+        caractereCourant := LIRE_CARACTERE()
+    FIN_TANT_QUE
+
+    // Traitement du dernier mot s'il existe
+    SI (caracterePrecedent != ' ' ET caracterePrecedent != '.') ALORS
+        nombreMots := nombreMots + 1
+    FIN_SI
+
+    // Affichage des résultats
+    AFFICHER("Nombre de mots dans la phrase : ", nombreMots)
+    AFFICHER("Nombre de voyelles dans la phrase : ", nombreVoyelles)
+
+FIN_ALGORITHME
+
+FONCTION EST_VOYELLE(caractere)
+    // Vérifie si le caractère est une voyelle
+    RETOURNER (caractere = 'a' OU caractere = 'e' OU caractere = 'i' OU caractere = 'o' OU caractere = 'u' OU caractere = 'y')
+FIN_FONCTION

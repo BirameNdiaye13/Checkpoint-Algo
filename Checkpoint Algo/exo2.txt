@@ -1,0 +1,37 @@
+ALGORITHME SommeElementsDistincts
+    // Ensembles donnés
+    Ensemble1 := [3, 1, 7, 9]
+    Ensemble2 := [2, 4, 1, 9, 3]
+
+    // Initialisation de la somme
+    somme := 0
+
+    // Traitement pour l'ensemble 1
+    POUR CHAQUE element DANS Ensemble1 FAIRE
+        SI (NON_EST_PRESENT(element, Ensemble2)) ALORS
+            // Ajouter l'élément à la somme s'il n'est pas présent dans l'ensemble 2
+            somme := somme + element
+        FIN_SI
+    FIN_POUR
+
+    // Traitement pour l'ensemble 2
+    POUR CHAQUE element DANS Ensemble2 FAIRE
+        SI (NON_EST_PRESENT(element, Ensemble1)) ALORS
+            // Ajouter l'élément à la somme s'il n'est pas présent dans l'ensemble 1
+            somme := somme + element
+        FIN_SI
+    FIN_POUR
+
+    // Affichage du résultat
+    AFFICHER("La somme des éléments distincts est : ", somme)
+FIN_ALGORITHME
+
+FONCTION NON_EST_PRESENT(element, ensemble)
+    // Vérifie si l'élément n'est pas présent dans l'ensemble
+    POUR CHAQUE e DANS ensemble FAIRE
+        SI (e = element) ALORS
+            RETOURNER FAUX
+        FIN_SI
+    FIN_POUR
+    RETOURNER VRAI
+FIN_FONCTION
